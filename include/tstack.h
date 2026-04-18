@@ -5,11 +5,17 @@
 template<typename T, int size>
 class TStack {
  private:
-  T data[size];
+  T* data;
   int top_index;
 
  public:
-  TStack() : top_index(-1) {}
+  TStack() : top_index(-1) {
+    data = new T[size];
+  }
+
+  ~TStack() {
+    delete[] data;
+  }
 
   bool isEmpty() const {
     return top_index == -1;
